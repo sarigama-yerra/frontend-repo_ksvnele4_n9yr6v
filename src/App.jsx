@@ -3,8 +3,12 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import VehicleGrid from './components/VehicleGrid';
 import Footer from './components/Footer';
+import AdminLogin from './components/AdminLogin';
+import AdminDashboard from './components/AdminDashboard';
 
 export default function App() {
+  const [admin, setAdmin] = React.useState(null);
+
   React.useEffect(() => {
     document.title = 'Sewa Mobil & Motor | RentRide';
     const metaDesc = document.querySelector('meta[name="description"]');
@@ -18,12 +22,25 @@ export default function App() {
     }
   }, []);
 
+  // Hash-based simple routing for demo: #admin shows admin page
+  const isAdminRoute = typeof window !== 'undefined' && window.location.hash === '#admin';
+
   return (
     <div className="min-h-screen bg-white text-slate-900">
       <Navbar />
-      <Hero />
-      <VehicleGrid />
-      <Footer />
+      {isAdminRoute ? (
+        admin ? (
+          <AdminDashboard onLogout={() => setAdmin(null)} />
+        ) : (
+          <AdminLogin onSuccess={setAdmin} />
+        )
+      ) : (
+        <>
+          <Hero />
+          <VehicleGrid />
+          <Footer />
+        </>
+      )}
     </div>
   );
 }

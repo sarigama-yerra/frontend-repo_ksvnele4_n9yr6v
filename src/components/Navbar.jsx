@@ -1,5 +1,5 @@
 import React from 'react';
-import { Car, Phone, Menu } from 'lucide-react';
+import { Car, Phone, Menu, Shield } from 'lucide-react';
 
 export default function Navbar() {
   const [open, setOpen] = React.useState(false);
@@ -20,6 +20,10 @@ export default function Navbar() {
               <Phone className="w-4 h-4" />
               <span>Sewa Sekarang</span>
             </a>
+            <a href="#admin" className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-slate-200 hover:bg-slate-50">
+              <Shield className="w-4 h-4" />
+              <span>Admin</span>
+            </a>
           </div>
           <button onClick={() => setOpen(!open)} className="md:hidden p-2 rounded-lg border border-slate-200">
             <Menu className="w-5 h-5" />
@@ -31,6 +35,7 @@ export default function Navbar() {
             <a href="#harga" className="block px-2 py-2 rounded hover:bg-slate-100">Harga</a>
             <a href="#kontak" className="block px-2 py-2 rounded hover:bg-slate-100">Kontak</a>
             <a href="#sewa" className="block px-2 py-2 rounded bg-blue-600 text-white text-center">Sewa Sekarang</a>
+            <a href="#admin" className="block px-2 py-2 rounded border text-center">Admin</a>
           </div>
         )}
       </nav>
